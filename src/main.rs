@@ -119,8 +119,13 @@ fn main() {
 
     let mut events_loop = glutin::EventsLoop::new();
     let window = glutin::WindowBuilder::new();
+    let (api, version) = if cfg!(target_os = "emscripten") {
+        (glutin::Api::WebGl, (2, 0))
+    } else {
+        (glutin::Api::OpenGlEs, (3, 0))
+    };
     let context = glutin::ContextBuilder::new()
-        .with_gl(glutin::GlRequest::Specific(glutin::Api::WebGl, (2, 0)));
+        .with_gl(glutin::GlRequest::Specific(api, version));
     let gl_window = glutin::GlWindow::new(window, context, &events_loop)
         .unwrap();
 

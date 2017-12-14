@@ -11,7 +11,7 @@ In Emscripten configuration, set `USE_WEBGL2=1`. I did it by just modifying `ems
 ## Running
 
 ```bash
-cargo target add wasm32-unknown-emscripten
+rustup target add wasm32-unknown-emscripten
 cargo build --target=wasm32-unknown-emscripten
 firefox triangle.html
 ```
