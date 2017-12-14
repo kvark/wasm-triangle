@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rust+GL+WASM Triangle</title>
+  </head>
+  <body>
+    <script type='text/javascript'>
+      var Module = {};
+
+      fetch('target/wasm32-unknown-emscripten/debug/wasm_triangle.wasm')
+        .then(response =>
+          response.arrayBuffer()
+        ).then(buffer => {
+
+          Module.canvas = document.getElementById("canvas");
+          Module.wasmBinary = buffer;
+
+          var script = document.createElement('script');
+          script.src = "target/wasm32-unknown-emscripten/debug/wasm-triangle.js";
+          script.onload = function() {
+            console.log("Emscripten boilerplate loaded.")
+          }
+          document.body.appendChild(script);
+        });
+    </script>
+    <canvas id="canvas" style="width:100%; height:100%"></canvas>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+[package]
+name = "wasm-triangle"
+version = "0.1.0"
+authors = ["Dzmitry Malyshau <kvark@mozilla.com>"]
+
+[dependencies]
+gl = "0.7"
+# TODO: pending https://github.com/tomaka/glutin/pull/962
+glutin = { git = "https://github.com/kvark/glutin", branch = "emscripten"}
